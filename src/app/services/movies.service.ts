@@ -15,10 +15,14 @@ export class MoviesService {
     return this.http.get<Movies[]>(`${this.baseUrl}/movie/popular`);
   }
 
+  getFavorites(id: number ) {
+    return this.http.get<Favorites[]>(`${this.baseUrl}/favorites?userId=${id}`)
+  }
+
   addFavorites(userId: number, movieId: number) {
     const favorite: Favorites = {
-      movieId,
       userId,
+      movieId,
     };
     return this.http.post<Favorites>(`${this.baseUrl}/favorites`, favorite);
   }

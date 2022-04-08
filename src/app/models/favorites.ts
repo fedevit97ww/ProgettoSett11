@@ -1,5 +1,5 @@
 export interface Favorites {
-  movieId: number,
   userId: number,
+  movieId: number,
   id?: number
 }

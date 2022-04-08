@@ -7,13 +7,11 @@
         alt=""
       />
       <mat-card-content>
-        <mat-card-title>
-          {{ movie.title }}
-        </mat-card-title>
+
         Voto: {{ movie.vote_average }}
       </mat-card-content>
-      <mat-card-actions>
-          <mat-icon>favorite</mat-icon>
+      <mat-card-actions *ngIf="userLog">
+          <mat-icon (click)="fav ? remFav(movie.id) : addFav(userLog.user.id,movie.id)"[ngStyle]="{'color': fav ? 'red' : ''}">favorite</mat-icon>
       </mat-card-actions>
     </mat-card>
   </div>
