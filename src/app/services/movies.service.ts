@@ -4,12 +4,6 @@ import { AuthService } from '../auth/auth.service';
 import { Favorites } from '../models/favorites';
 import { Movies } from '../models/movies';
 
-export interface FavMovies {
-  data: Movies;
-  favId?: number;
-  favIsLoading: boolean;
-}
-
 @Injectable({
   providedIn: 'root',
 })
@@ -27,5 +21,8 @@ export class MoviesService {
       userId,
     };
     return this.http.post<Favorites>(`${this.baseUrl}/favorites`, favorite);
+  }
+  removeFavorites(id: number) {
+    return this.http.delete<Favorites>(`${this.baseUrl}/favorites/${id}`);
   }
 }

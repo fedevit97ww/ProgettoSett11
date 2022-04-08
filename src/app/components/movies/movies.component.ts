@@ -18,4 +18,6 @@ export class MoviesComponent implements OnInit {
       this.movies = f;
     });
   }
+
+
 }
