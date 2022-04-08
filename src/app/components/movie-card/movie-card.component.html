@@ -1,20 +1,20 @@
-<div class="contenitore">
-  <div class="carta" *ngFor="let m of movies; let i = index">
+
+  <div class="carta" >
     <mat-card>
       <img
         mat-card-image
-        [src]="'http://image.tmdb.org/t/p/w500' + m.poster_path"
+        [src]="'http://image.tmdb.org/t/p/w500' + movie.poster_path"
         alt=""
       />
       <mat-card-content>
         <mat-card-title>
-          {{ m.title }}
+          {{ movie.title }}
         </mat-card-title>
-        Voto: {{ m.vote_average }}
+        Voto: {{ movie.vote_average }}
       </mat-card-content>
       <mat-card-actions>
           <mat-icon>favorite</mat-icon>
       </mat-card-actions>
     </mat-card>
   </div>
-</div>
+

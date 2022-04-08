@@ -18,12 +18,12 @@ import { AuthService } from './auth/auth.service';
         width: 150px;
       }
     </style>
-    <mat-toolbar color="primary" *ngIf="user!null">
+    <mat-toolbar color="primary" *ngIf="showNavbar">
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
       <span>Progetto S11 - Movies</span>
     </mat-toolbar>
 
-    <mat-sidenav-container class="example-container">
+    <mat-sidenav-container class="example-container" >
       <mat-sidenav mode="push" #sidenav>
         <mat-list>
           <mat-list-item>
@@ -41,7 +41,7 @@ import { AuthService } from './auth/auth.service';
             </button>
           </mat-list-item>
           <mat-list-item class="bottom">
-            <button color="warn" mat-flat-button (click)="logout()">
+            <button color="warn" mat-flat-button (click)="logout();sidenav.toggle()">
               Logout
             </button>
           </mat-list-item>
@@ -57,20 +57,17 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
   title = 'movies';
-  user = localStorage.getItem('user');
+  public showNavbar = false;
 
   constructor(private authSrv: AuthService) {
-    console.log( this.authSrv.user$)
-
+    console.log(this.authSrv.user$);
   }
   ngOnInit() {
-    console.log(this.user);
+    this.authSrv.user$.subscribe(user => {
+      this.showNavbar = !!user
+    })
   }
   logout() {
     this.authSrv.logout();
-
   }
-
-
-
 }

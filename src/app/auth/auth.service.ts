@@ -28,12 +28,14 @@ export class AuthService {
     this.ripristina()
   }
 
+
   login(data: { email: string; password: string }) {
     return this.http.post<AuthData>(`${this.URL}/login`, data).pipe(
       tap((data) => {
         this.authSub.next(data);
         localStorage.setItem('user', JSON.stringify(data));
         this.autoLogout(data);
+
       })
     );
   }
@@ -41,6 +43,7 @@ export class AuthService {
     this.authSub.next(null)
     localStorage.removeItem('user');
     this.router.navigate(['/login'])
+
   }
 
   registration(data: { name:string, email: string, password: string }) {

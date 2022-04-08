@@ -1,5 +1,8 @@
-
-<ng-container >
-  <app-movie-card></app-movie-card>
+<ng-container>
+  <div class="contenitore">
+    <app-movie-card
+      *ngFor="let m of movies; let i = index"
+      [movie]="m"
+    ></app-movie-card>
+  </div>
 </ng-container>
-
