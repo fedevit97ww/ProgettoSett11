@@ -1,0 +1,17 @@
+.contenitore{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px auto;
+}
+
+.mat-card{
+  margin: 30px;
+}
+.carta{
+  max-width: 20%;
+}
+.mat-card-title {
+margin-bottom: 15px !important;
+}
+
